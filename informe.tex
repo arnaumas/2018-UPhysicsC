@@ -46,8 +46,11 @@
 	inter-unit-product = \ensuremath{ \, },
 	allow-number-unit-breaks = true,
 	detect-family = true,
-	list-units = single
+	list-units = single,
+	math-celsius = {}^{\circ}\kern-\scriptspace C
 }
+
+\DeclareMathAlphabet{\mathsfit}{T1}{\sfdefault}{\mddefault}{\sldefault}
 
 \newcommand{\Z}{\mathbb{Z}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
@@ -116,7 +119,33 @@ We will ground our model of the evolution of a compost pile on its heat balance 
 \end{equation}
 We will consider the temperature within the compost pile to be constant throughout, as well as its heat capacity, and so the first term of \cref{eq:first balance} becomes \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. As for the losses, given the temperature range we are considering, \SIrange{20}{80}{\celsius}, it seems reasonable to assume that these are mainly due to convection. Thus we may write \( \dot{Q}_l = -UA\left(T - T_\text{env}\right) \), where \( U \) is the overall heat transfer coefficient, in \si{W.m^{-1}.K^{-1}}, \( A \) is the total surface area of the pile and \( T_\text{env} \) is the outside temperature. 
 
-The 
+\begin{figure}[htb]
+	\sffamily \footnotesize \centering
+	\input{figs/2-temperatura}
+	\caption{Temperature evolution of the compost pile modeled with mesophilic and thermophilic populations}
+	\label{fig:temp-mesos-termos}
+\end{figure}
+
+\begin{figure}[htb]
+	\sffamily \footnotesize \centering
+	\input{figs/2-temperatura-A}
+	\caption{Temperature evolution of the compost pile for various values of surface area}
+	\label{fig:temp-arees}
+\end{figure}
+
+\begin{figure}[htb]
+	\sffamily \footnotesize \centering
+	\input{figs/2-bacteris}
+	\caption{Evolution of the relative mass of the populations of mesophilic and thermophilic organisms}
+	\label{fig:poblacions}
+\end{figure}
+
+\begin{figure}[htb]
+	\sffamily \footnotesize \centering
+	\input{figs/2-potencies}
+	\caption{Power output of the mesophilic and thermophilic reactions}
+	\label{fig:potencies}
+\end{figure}
 
 \clearpage
 \appendix
