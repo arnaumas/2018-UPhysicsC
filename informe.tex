@@ -20,6 +20,7 @@
 \usepackage{enumitem}
 \usepackage{bibtopic}
 \usepackage{chemformula}
+\usepackage{mhchem}
 
 \geometry{
 	a4paper,
@@ -96,15 +97,11 @@
 \begin{titlingpage}
  	\maketitle
 
-	\noindent \hrulefill \\
-	\begin{abstract}
-		The aim of this report is to discuss the viability of a solar sail mission to Mars. Results have been obtained by attempting to solve the equations that govern the motion of a solar sail in the Solar System. Under suitable approximations, these are analytically solvable. The general case, however, is not, and required the use of numerical techniques. 
+\noindent \hrulefill \\
+\begin{abstract}
 
-		Results show such a mission would be indeed feasible, allowing for payloads of \SI{1000}{kg} to be sent to Mars' orbit within about a year. However, actual arrival to Mars, subject to the required initial conditions, has been found to be of high complexity. In spite of this, some trajectories have been found that bring the craft close enough to Mars at the cost of a higher, even if still reasonable, travel time. Additionally, with the introduction of a simple steering maneuver, it has been found that it is possible for the solar sail to reach the orbit of Mars and to remain stable in it for a sufficiently long timescale.
-
-		All of these results seem to suggest that solar sailing is indeed a suitable method of light inner Solar System travel, especially given its simplicity when compared to the other more common options. 
-	\end{abstract}
-	\hrulefill
+\end{abstract}
+\hrulefill
 \end{titlingpage}
 
 \begin{titlingpage}
@@ -112,57 +109,101 @@
 \end{titlingpage}
 
 \section{Introduction}
-\cite{mason}
+\section{Thezo composting process}
+Composting is defined as the biological oxidative decomposition of organic constituents of waste under controlled conditions. This process is mainly used to recycle organic matter into useful soil conditioner which can be used in gardening, agriculture and horticulture.
 
-\section{The composting process}
-\subsection{History and relevancy of composting}
-Composting is defined as the biological oxidative decomposition of organic constituents in wastes under controlled conditions. dfdfsfsfsfasdfasdfasfsadfas
+\subsection{Biological aspects}
+Many species take part in the process of composting organic matter. A high proportion of them are, according to \cite{cornell}, bacteria (80 to 90\%) but we can also find actinomycetes, fungi, protozoa and rotifers. We distinguish between \emph{mesophilic} and \emph{thermophilic} microbes. The first thrive in moderate temperatures, between \SI{20}{\celsius} and \SI{40}{\celsius}, while the latter do so in a higher range. In general, the term thermophilic applies to microorganisms that live in temperatures up to \SI{120}{\celsius}, but in the case of composting only \emph{simply thermophiles}, which sustain temperatures of up to \SI{60}{\celsius}.
 
-\subsection{Phases of the process}
-During the process of composting, the substrate evolves through three principal phases:
+This distinction gives rise to three differentiated phases of the composting process:
+
+\emph{Mesophilic phase}, in which mesophilic microbes proliferate rapidly in the organic matter and decompose readily degradable components such as sugars. This process releases a lot of heat and lasts for between one and five days, when the temperature reaches \SI{40}{\celsius} and this type of microbes become increasingly inhibited.
+
+After the increase in temperature activates the thermophilic microbes, composting enters the \emph{thermophilic phase}, in which more complex substances such as cellulose, protein and fats are decomposed at a high rate. This biooxidative activity produces \ch{CO2} and \ch{H2O} and releases heat. The high temperatures (\SIrange{40}{60}{\celsius}) destroy undesirable elements such as pathogens, fly larvae and weed seeds, thus sanitizing the compost. This phase lasts for several weeks or months, depending on the size of the system and the composition of the mixture.
+
+Finally there is the \emph{cooling and maturation phase}, during which, as microbial populations stabilize, decomposition rate decreases and temperature declines, allowing mesophilic microorganisms to recolonize the compost. In the final process of stabilization and mineralization, the most stable organic compounds are decomposed and the compost becomes a fertile final product at an ambient temperature.
+ 
+\subsection{Physical aspects}
+\subsubsection{Temperature profile}
+The nature of the composting process leads to a characteristic temperature profile. A typical experimental temperature curve, such as the one in \cref{fig:corba model}, has a steep slope at the beginning, corresponding to the rapid output of heat during the growth of the first mesophilic populations. In some cases, there can be a characteristic dip in temperature at around \SI{40}{\celsius}. This is because at this point the mesophilic populations is reaching stagnation, and if the growth rate of the thermophilic population is still small, the combination of these two phenomena leads to a period of low microbial activity, and therefore a low power output. We can then identify the transition between the mesophilc and thermophilic stages. Finally, once thermophilic activity ceases, convective heat loss becomes dominant and the temperature lowers steadily, signaling the cooling and maturation and phase. 
+
+\begin{figure}[htb]
+	\sffamily \footnotesize \centering
+	\includegraphics[scale=0.55]{model-T.jpg}
+	\caption{Temperature curve for a composting process, \cite{dummies}}
+	\label{fig:corba model}
+\end{figure}
+
+\subsubsection{Other aspects}
 \begin{itemize}
-	\item \textbf{Mesophilic phase:} In the first stage, mesophilic microbes proliferate rapidly in the organic matter and decompose readily degradable components, such as sugars. This process releases heat and lasts between one and five days, when the temperature raises up to \SI{40}{\celsius} and this type of microbes become increasingly inhibited.
-	\item \textbf{Thermophilic phase:} The raise in temperature activates the thermophilic microbes, which decompose cellulose, protein and fats. This biooxidative activity produces \ch{CO2} and \ch{H2O} and realeses a lot of heat. This part of the process is important because the high temperatures destroy animal and plant pathogens.
-	\item \textbf{Maturation and "curing" phase:} As microbial populations stabilize, decomposition rate decreases and temperature declines, allowing mesophilic microorganisms to recolonize the compost. A process of stabilization and mineralization where the most stable organic compounds are decomposed and the compost becomes a "humified" final product.
+	\item \textbf{Moisture.} Decomposition occurs more rapidly in the thin water films in the surface of the organic particles. Optimal moisture is found to be between 50 and 60\%.
+	\item  \textbf{Aeration.} Oxygen is essential for the metabolism and respiration of aerobic organisms and for oxidizing the organic molecules of the waste material. During the process, \ch{O2} is consumed while \ch{CO2} is released. Various methods can be used to maintain the aerobic conditions necessary for the composting process to occur: aeration pipes, air holes, forced air flow or mechanical turning of the pile.
+	\item  \textbf{Size of the compost system.} The size of the pile must be small enough to allow aeration through the pile, yet it needs to be of a sufficient size to prevent dissipation of heat.
+	\end{itemize}
 
-\end{itemize}
-
-\subsubsection{Mesophilic and thermophilic microbes}
-\subsection{Physical factors}
-
-
-\section{Model}
-
-\subsection{Theoretical model}
-
-\subsubsection{Environment}
-
-The compost pile will be exposed to day-night temperature shift, since it will be left outdoors. Thus, we will consider a varying room temperature between \SI{5}{\celsius} and \SI{20}{\celsius} as a sinusoidal function for our pile. In addition, we will let the leftovers begin at a \SI{20}{\celsius} temperature.  
-
-\subsubsection{Compost}
-
-We are trying to study the decomposition of kitchen vegetable waste, and hence we will not produce a big amount of compost. For a medium-size family, \si{30}{kg} seems an adequate monthly output of organic waste. 
-
-For the sake of simplicity, we can assume that our pile will be homogeneous: we will mix the pile initially in a way such that we are not able to distinguish the solid, liquid and gas phase. This way we can also assume that the thermophysical properties will remain constant, including the porosity. (It might be thought that as the decomposition goes on, the gas phase will grow bigger and therefore the porosity will be reduced, but we will consider an average value of it.) %SOBRA? 
-
-With regard to moisture, it is widely known that its content of the composting materials diminishes due to evaporation, nonetheless if the evaporation is compensated by the water being fed with the gas phase; the moisture content could be kept nearly constant \cite{niceassumptions}. We may assume then a moisture level of a 50\%, for it is a reasonable percentage considering only vegetable kitchen waste and its high amount of water. 
-
-Any periodic aeration of the pile will be avoided. The dimensions of the compost pile are not big enough to require an external aeration system. Due to the low thermal conductance of the container and the possibility of some slow air flow through the holes of it, the compost will receive the oxygen it needs in order to keep up with the decomposition but without having a big effect on the temperature. In case any of our designs reached high temperatures (above \SI{60}{\celsius} or so), it will be discarded. 
-
-As we were saying, the container of the pile will be thought as a HDPE cubic box not completely isolated (i.e. some air flow is permitted). This way we will avoid the lack of oxygen without losing the isolation. The walls of it will be thin, this way we can neglect the heat losses due to conduction, and will also grant a weaker isolation that will lead to smoother temperatures. 
-
-\subsubsection{Microbes}
-
-Our model will consist of a compost pile in which two main types of microbe produce the decomposition and release energy: mesophiles and thermophiles. We assume that the mesophilic microbes will activate at room temperature and will inactivate at \SI{40}{\celsius}, where they reach their peak activity, whereas thermophilic microbes will take over at this temperature and inactivate at \SI{60}{\celsius}. We also assume that the exothermicity of the first part of the decomposition is bigger than the second, so the thermophiles will present a slower growth than the others.
-
-Our model has been based on the empirical data of the decomposition of vegetable waste produced by the mesophile \textit{Aspergillus niger} \cite{saucedo}. From this information we were able to 
-
-\subsection{Numerical model}
-We will ground our model of the evolution of a compost pile on its heat balance equation. There are two main terms at play: the heat produced by the biochemical process of composting, \( \dot{Q}_c \) and the heat losses of the pile, \( \dot{Q}_l \). We can thus write
+\section{Development of the model}
+\subsection{General approach}
+We will base our model on the energy balance of the heat pile. We will consider the pile as an homogeneous system, therefore there will be no spatial dependence for the temperature nor will we consider diffusive processes of the oxygen and other fluids inside the pile. There are two main terms at play: the heat produced by the biochemical process of composting, \( \dot{Q}_c \) and the heat losses of the pile, \( \dot{Q}_l \). We can thus write
 \begin{equation} \label{eq:first balance}
 	\dot{Q} = \dot{Q}_c + \dot{Q}_l. 
 \end{equation}
-We will consider the temperature within the compost pile to be constant throughout, as well as its heat capacity, and so the first term of \cref{eq:first balance} becomes \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. As for the losses, given the temperature range we are considering, \SIrange{20}{70}{\celsius}, it seems reasonable to assume that these are mainly due to convection. Radiation in this range of temperatures is perfectly negligible. Thus we may write \( \dot{Q}_l = -UA\left(T - T_\text{env}\right) \), where \( U \) is the overall heat transfer coefficient, in \si{W.m^{-1}.K^{-1}}, \( A \) is the total surface area of the pile and \( T_\text{env} \) is the outside temperature. We may also discard losses due to conduction, since we consider the walls of the pile to be thin.
+
+Given that we are assuming that the pile is homogeneous, we can write the left hand side of \cref{eq:first balance} as \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. 
+
+As for the losses, given the temperature range we are considering, \SIrange{20}{70}{\celsius}, it seems reasonable to assume that radiation plays no role and that these are mainly due to convection. Since part of the pile will be in contact with the ground, there is conduction taking place. However we will disregard it given that it is a much slower process than convection.  Thus we may write \( \dot{Q}_l = -hA\left(T - T_\text{env}\right) \), where \( h \) is the heat transfer coefficient of air, in \si{W.m^{-1}.K^{-1}}, \( A \) is the exposed surface area of the pile and \( T_\text{env} \) is the outside temperature. We will introduce a sinusoidal time dependence in the ambient temperature to model the given day-night shift between \SI{5}{\celsius} and \SI{20}{\celsius} so 
+\begin{align} \label{eq:temp ambient}
+	\begin{aligned}
+		T_\text{env}(t)  & = \frac{T_\text{max} + T_\text{min}}{2} \\
+									 	 & + \frac{T_\text{max} - T_\text{min}}{2} \sin{\left(\frac{2\pi t}{24}\right)},
+	\end{aligned}
+\end{align}
+where \( t \) is the time in hours. 
+
+If the chemical processes involved in composting have an exothermicity of \( Q_b \) then we can write	\( \dot{Q}_c = mQ_b \dot{B} \), where \( B \) is the percentage of mass of the microbial population. The task then is to determine an expression for \( \dot{B} \) that accurately describes the kinetic properties of microbial growth in composting processes.
+
+\subsection{Determining the microbial growth rate}
+It seems reasonable to assume that the evolution of the population should be logistic, given that composting entails the depletion of the organic compounds that serve as sustenance to the population. However, the growth should also be tightly coupled to the temperature, so that it reflects the temperature range in which the various populations thrive. The process that limits the growth can be though of as an enzymatic reaction between the two states of the microbes: active, in which they are consuming organic matter and so reproducing, and inactive, in which they are not, as described in \cite{85bio}. \cite{biokinetics} details the kinetics of this kind of processes. Thus the effect of temperature on microbial activity can be evaluated by considering the activation-inactivation reaction,
+\begin{equation*}
+    \ce{A <=>[\ce{k1}][\ce{k2}] I}. 
+\end{equation*}
+We have that $\dot{B}=k_1[A]$, since \( [A] \) is the fraction of the microbial population that is reproducing, and $\dot{B}= -k_2[I]$. Additionally, \( [A] + [I] = B \).  By combining these last three equations we have that
+\begin{equation} \label{eq:cinetica 1}
+	\left(\frac{1}{k_1}-\frac{1}{k_2}\right)\dot{B}=B.
+\end{equation}
+and 
+\begin{equation} \label{eq:cinetica 2}
+	k_1[A]+k_2[I]=0.
+\end{equation}
+
+If the forward and inverse reactions follow Arrhenius kinetics, we can write $k_i=P_ie^{-E_i/RT}$, where $P_i$ are the empirical pre-exponential factors, $E_i$ the respective activation energies, $R$ the universal gas constant and $T$ the temperature. This, combined with \cref{eq:cinetica 1,eq:cinetica 2} gives the temperature dependance of the specific growth rate \( \mu(T) \), 
+\begin{equation} \label{eq:mumax}
+    \mu(T)=\frac{P_1e^{-E_1/RT}}{1+\frac{P_2}{P_2}e^{-E_2/RT}}
+\end{equation}
+using the approximation $k_2\gg k_1$ ACABAR!!!!!
+
+We now have an expression governing the evolution of the bacterial population,
+\begin{equation}\label{eq:edo B}
+	\dot{B} = \mu(T)B\left(1 - \frac{B}{B_\text{max}}\right),
+\end{equation}
+which gives us a specific form of the heat generated by the biological process. This form for the biologically generated heat appears in \cite{semenov}. There are additional terms that could be considered. \cite{semenov} uses the heat generated through the microbes' consumption of cellulose. We found that it is, however, much smaller when compared to the term we have obtained.  
+
+Hence, we can write the differential equation that governs \( T \): 
+\begin{equation} \label{eq:edo T}
+	\begin{aligned}
+		mc\dot{T} & = -hA\left(T - T_\text{env}(t)\right) \\
+							& + Q_bm\mu(T)B(t)\left(1 - \frac{1}{B_\text{max}}\right). 
+	\end{aligned}
+\end{equation}
+	This is coupled to \cref{eq:edo B}, which governs the growth of the mictrobial population.  
+
+	This equation, however, only accounts for one microbial population. We have mentioned before that composting is a process that takes place in two different stages because there are two different kinds of organisms at play. A way of accounting for this fact in our model is to decouple \( B \) into \( B_1 \), the proportion of mesophilic microorganisms, and \( B_2 \), the proportion of thermophilic microorganisms, each with the correspoding exothermicities and specific growth rates. 
+
+\subsection{Choice of parameters}
+\cite{saucedo} gives the preexponential factors, activation energies for the fungus \textit{Aspergillus niger}. This species is mesophilic and proliferates in vegetable waste, specially lettuce, tomato and lemon. This means that we can certainly use this data since we are modeling the composting of domestic vegetable waste. 
+
+No equivalent set of data for thermophilic microbes was readily available. For our model we extrapolated the corresponding parameters for a thermophilic population. Given that the thermophilic phase usually is longer and entails a smaller temperature change than the mesophilic phase, the specific growth rate and exothermicity of thermophiles should be smaller than those of mesophiles. 
+
+In \cite{saucedo}, there is no distinction between mesophiles and thermophiles. It provides values for the initial and maximum concentration for the total microbial population. It seems reasonable to split these values between the mesophilic and thermophilic populations, since we could not find specific data for the ratio of mesophiles to thermophiles. Additionally, these values are given as percentages of the dry matter. Although it is widely known that the moisture content of the composting materials diminishes due to evaporation, we can argue, following \cite{niceassumptions}, that in our case it will remain constant since our pile is not physically isolated from the environment. We assume that the moisture content of vegetable waste is around 50\%. 
 
 \section{Results and analysis}
 \begin{figure}[htb]
