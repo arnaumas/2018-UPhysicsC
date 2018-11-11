@@ -19,6 +19,7 @@
 \usepackage[sort]{cleveref}
 \usepackage{enumitem}
 \usepackage{bibtopic}
+\usepackage{chemformula}
 
 \geometry{
 	a4paper,
@@ -109,12 +110,54 @@ All of these results seem to suggest that solar sailing is indeed a suitable met
 \section{Introduction}
 \cite{mason}
 
-\section{First model}
+\section{The composting process}
+\subsection{History and relevancy of composting}
+Composting is defined as the biological oxidative decomposition of organic constituents in wastes (generally organic) under controlled conditions.
+\subsection{Phases of the process}
+During the process of composting, the substrate evolves through three principal phases:
+
+\textbf{Mesophilic phase:} In the first stage, mesophilic microbes proliferate rapidly in the organic matter and decompose readily degradable components, such as sugars. This process releases heat and lasts between one and five days, when the temperature raises up to \SI{40}{\celsius} and this type of microbes become increasingly inhibited.
+
+\textbf{Thermophilic phase:} The raise in temperature activates the thermophilic microbes, which decompose cellulose, protein and fats. This biooxidative activity produces \ch{CO2} and \ch{H2O} and realeses a lot of heat. This part of the process is important because the high temperatures destroy animal and plant pathogens.
+
+\textbf{Maturation and "curing" phase:} As microbial populations stabilize, decomposition rate decreases and temperature declines, allowing mesophilic microorganisms to recolonize the compost. A process of stabilization and mineralization where the most stable organic compounds are decomposed and the compost becomes a "humified" final product.
+ 
+\subsubsection{Mesophilic and thermophilic microbes}
+\subsection{Physical factors}
+
+
+\section{Model}
+
+\subsection{Theoretical model}
+
+\subsubsection{Environment}
+
+The compost pile will be exposed to day-night temperature shift, since it will be left outdoors. Thus, we will consider a varying room temperature between \SI{5}{\celsius} and \si{20}{\celsius} as a sinusoidal function for our pile. In addition, we will let the leftovers begin at a \SI{20}{\celsius} temperature.  
+
+\subsubsection{Compost}
+
+We are trying to study the decomposition of kitchen vegetable waste, and hence we will not produce a big amount of compost. For a medium-size family, \si{30}{kg} seems an adequate monthly output of organic waste. 
+
+For the sake of simplicity, we can assume that our pile will be homogeneous: we will mix the pile initially in a way such that we are not able to distinguish the solid, liquid and gas phase. This way we can also assume that the thermophysical properties will remain constant, including the porosity. (It might be thought that as the decomposition goes on, the gas phase will grow bigger and therefore the porosity will be reduced, but we will consider an average value of it.) %SOBRA? 
+
+With regard to moisture, it is widely known that its content of the composting materials diminishes due to evaporation, nonetheless if the evaporation is compensated by the water being fed with the gas phase; the moisture content could be kept nearly constant \cite{niceassumptions}. We may assume then a moisture level of a 50\%, for it is a reasonable percentage considering only vegetable kitchen waste and its high amount of water. 
+
+Any periodic aeration of the pile will be avoided. The dimensions of the compost pile are not big enough to require an external aeration system. Due to the low thermal conductance of the container and the possibility of some slow air flow through the holes of it, the compost will receive the oxygen it needs in order to keep up with the decomposition but without having a big effect on the temperature. In case any of our designs reached high temperatures (above \si{60}{\celsius} or so), it will be discarded. 
+
+As we were saying, the container of the pile will be thought as a HDPE cubic box not completely isolated (i.e. some air flow is permitted). This way we will avoid the lack of oxygen without losing the isolation. The walls of it will be thin, this way we can neglect the heat losses due to conduction, and will also grant a weaker isolation that will lead to smoother temperatures. 
+
+\subsubsection{Microbes}
+
+Our model will consist of a compost pile in which two main types of microbe produce the decomposition and release energy: mesophiles and thermophiles. We assume that the mesophilic microbes will activate at room temperature and will inactivate at \si{40}{\celsius}, where they reach their peak activity, whereas thermophilic microbes will take over at this temperature and inactivate at \si{60}{\celsius}. We also assume that the exothermicity of the first part of the decomposition is bigger than the second, so the thermophiles will present a slower growth than the others.
+
+Our model has been based on the empirical data of the decomposition of vegetable waste produced by the mesophile \textit{aspergillus niger}\cite{mesophile}. From this information we were able to 
+
+\subsection{Numerical model}
 We will ground our model of the evolution of a compost pile on its heat balance equation. There are two main terms at play: the heat produced by the biochemical process of composting, \( \dot{Q}_c \) and the heat losses of the pile, \( \dot{Q}_l \). We can thus write
 \begin{equation} \label{eq:first balance}
 	\dot{Q} = \dot{Q}_c + \dot{Q}_l. 
 \end{equation}
-We will consider the temperature within the compost pile to be constant throughout, as well as its heat capacity, and so the first term of \cref{eq:first balance} becomes \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. As for the losses, given the temperature range we are considering, \SIrange{20}{80}{\celsius}, it seems reasonable to assume that these are mainly due to convection. Thus we may write \( \dot{Q}_l = -UA\left(T - T_\text{env}\right) \), where \( U \) is the overall heat transfer coefficient, in \si{W.m^{-1}.K^{-1}}, \( A \) is the total surface area of the pile and \( T_\text{env} \) is the outside temperature. 
+We will consider the temperature within the compost pile to be constant throughout, as well as its heat capacity, and so the first term of \cref{eq:first balance} becomes \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. As for the losses, given the temperature range we are considering, \SIrange{20}{70}{\celsius}, it seems reasonable to assume that these are mainly due to convection. Radiation in this range of temperatures is perfectly negligible. Thus we may write \( \dot{Q}_l = -UA\left(T - T_\text{env}\right) \), where \( U \) is the overall heat transfer coefficient, in \si{W.m^{-1}.K^{-1}}, \( A \) is the total surface area of the pile and \( T_\text{env} \) is the outside temperature. We may also discard losses due to conduction, since we consider the walls of the pile to be thin.
 
 The 
 
