@@ -1,0 +1,22 @@
+set terminal cairolatex pdf colortext color size 7.8cm, 6cm
+set output '2-temperatura.tex'
+
+# Format dels eixos
+set xlabel '$\mathsfit t \ (\si{days})$'
+set ylabel '$\mathsfit T \ (\si{\celsius})$'
+set format '\num{%g}'
+set border linewidth 1.5
+
+set style line 1 linecolor rgb "dark-violet" pointtype 1 pointsize 0.01
+set style line 2 linecolor rgb "gray" linewidth 1 dashtype 2
+
+set xrange [0:31]
+set yrange [10:55]
+set xtics scale 1,0.5
+set mxtics 2
+set ytics scale 1,0.5
+set mytics 2
+set grid xtics ytics mxtics mytics linestyle 2
+
+plot '../codis/2-temperatura.dat' using ($1/24):2 notitle with points linestyle 1
+
