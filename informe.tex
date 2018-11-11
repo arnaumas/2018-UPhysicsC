@@ -1,0 +1,136 @@
+\documentclass[12pt, a4paper, twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[bf,sf,small,pagestyles]{titlesec}
+\usepackage{titling}
+\usepackage{abstract}
+\usepackage[font={footnotesize, sf}, labelfont=bf]{caption} 
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{physics}
+\usepackage[sort]{cleveref}
+\usepackage{enumitem}
+\usepackage{bibtopic}
+
+\geometry{
+	a4paper,
+	right = 2.5cm,
+	left = 2.5cm,
+	bottom = 3cm,
+	top = 3cm
+}
+
+\hypersetup{
+	colorlinks,
+	linkcolor = {red!50!blue},
+	citecolor = {red!50!blue},
+	linktoc = page
+}
+
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+\graphicspath{{./figs/}}
+
+% Unitats
+\sisetup{
+	inter-unit-product = \ensuremath{ \, },
+	allow-number-unit-breaks = true,
+	detect-family = true,
+	list-units = single
+}
+
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ry}{\mathit{Ry}}
+\newcommand{\inn}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\proj}[1]{\ketbra{#1}{#1}}
+\newcommand{\parbreak}{
+	\begin{center}
+		--- $\ast$ ---
+	\end{center} 
+}
+\makeatletter
+\newcommand*{\defeq}{\mathrel{\rlap{%
+    \raisebox{0.3ex}{$\m@th\cdot$}}%
+  \raisebox{-0.3ex}{$\m@th\cdot$}}%
+=
+}
+\makeatother
+
+\newpagestyle{pagina}{
+	\headrule
+	\sethead*{\bfseries \sffamily Compost Pile Sizes}{}{\theauthor}
+	\footrule
+	\setfoot*{}{}{\sffamily \thepage}
+}
+\renewpagestyle{plain}{
+	\footrule
+	\setfoot*{}{}{\sffamily \thepage}
+}
+\pagestyle{pagina}
+
+\title{\sffamily \bfseries Problem B: Compost Pile Sizes}
+\author{\sffamily Team 242}
+\date{}
+
+\begin{document}
+\renewcommand{\abstractname}{}
+\renewcommand{\absnamepos}{empty}
+\begin{titlingpage}
+ \maketitle
+
+\noindent \hrulefill \\
+\begin{abstract}
+The aim of this report is to discuss the viability of a solar sail mission to Mars. Results have been obtained by attempting to solve the equations that govern the motion of a solar sail in the Solar System. Under suitable approximations, these are analytically solvable. The general case, however, is not, and required the use of numerical techniques. 
+
+Results show such a mission would be indeed feasible, allowing for payloads of \SI{1000}{kg} to be sent to Mars' orbit within about a year. However, actual arrival to Mars, subject to the required initial conditions, has been found to be of high complexity. In spite of this, some trajectories have been found that bring the craft close enough to Mars at the cost of a higher, even if still reasonable, travel time. Additionally, with the introduction of a simple steering maneuver, it has been found that it is possible for the solar sail to reach the orbit of Mars and to remain stable in it for a sufficiently long timescale.
+
+All of these results seem to suggest that solar sailing is indeed a suitable method of light inner Solar System travel, especially given its simplicity when compared to the other more common options. 
+\end{abstract}
+\hrulefill
+\end{titlingpage}
+
+\begin{titlingpage}
+\tableofcontents
+\end{titlingpage}
+
+\section{Introduction}
+\cite{mason}
+
+\section{First model}
+We will ground our model of the evolution of a compost pile on its heat balance equation. There are two main terms at play: the heat produced by the biochemical process of composting, \( \dot{Q}_c \) and the heat losses of the pile, \( \dot{Q}_l \). We can thus write
+\begin{equation} \label{eq:first balance}
+	\dot{Q} = \dot{Q}_c + \dot{Q}_l. 
+\end{equation}
+We will consider the temperature within the compost pile to be constant throughout, as well as its heat capacity, and so the first term of \cref{eq:first balance} becomes \( \dot{Q} = mc\dot{T} \), where \( m \) is the mass of the pile and \( c \) its specific heat capacity. As for the losses, given the temperature range we are considering, \SIrange{20}{80}{\celsius}, it seems reasonable to assume that these are mainly due to convection. Thus we may write \( \dot{Q}_l = -UA\left(T - T_\text{env}\right) \), where \( U \) is the overall heat transfer coefficient, in \si{W.m^{-1}.K^{-1}}, \( A \) is the total surface area of the pile and \( T_\text{env} \) is the outside temperature. 
+
+The 
+
+\clearpage
+\appendix
+\section{References and Further Reading}
+\begin{btSect}{fonts}
+	\bibliographystyle{ieeetr}
+	\subsection*{References}	
+	\btPrintCited
+\end{btSect}
+
+\begin{btSect}{UphysicscNotes}
+	\bibliographystyle{ieeetr}
+	\subsection*{Further Reading}	
+	\btPrintNotCited
+\end{btSect}
+
+\end{document}
