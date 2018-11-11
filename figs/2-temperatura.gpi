@@ -10,7 +10,7 @@ set border linewidth 1.5
 set style line 1 linecolor rgb "dark-violet" pointtype 1 pointsize 0.01
 set style line 2 linecolor rgb "gray" linewidth 1 dashtype 2
 
-set xrange [0:31]
+set xrange [0:42]
 set yrange [10:55]
 set xtics scale 1,0.5
 set mxtics 2

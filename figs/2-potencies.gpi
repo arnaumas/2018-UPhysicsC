@@ -3,24 +3,24 @@ set output '2-potencies.tex'
 
 # Format dels eixos
 set xlabel '$\mathsfit t \ (\si{days})$'
-set ylabel '$\mathsfit P \ (\si{kW})$'
+set ylabel '$\mathsfit P \ (\si{MW})$'
 set format '\num{%g}'
 set border linewidth 1.5
 
-set style line 1 linecolor rgb "dark-violet" pointtype 1 pointsize 0.01
+set style line 1 linecolor rgb "dark-violet" linewidth 1.2
 set style line 2 linecolor rgb "gray" linewidth 1 dashtype 2
-set style line 3 linecolor rgb "orange" pointtype 1 pointsize 0.01
+set style line 3 linecolor rgb "orange" linewidth 1.2
 
-set xrange [0:14]
-set yrange [0:160]
+set xrange [0:15]
+set yrange [0:2.1]
 set xtics scale 1,0.5
 set mxtics 2
 set ytics scale 1,0.5
 set mytics 2
 set grid xtics ytics mxtics mytics linestyle 2
 
-set label at 2,80 '\etiqueta{\footnotesize Mesophiles}' center rotate by -87 front
-set label at 5,17 '\etiqueta{\footnotesize Thermophiles}' center rotate by 10 front
+set label at 1.5,0.8 '\etiqueta{\footnotesize Mesophiles}' center rotate by -87 front textcolor rgb "dark-violet"
+set label at 5,0.17 '\etiqueta{\footnotesize Thermophiles}' center rotate by 12 front textcolor rgb "orange"
 
-plot '../codis/2-potencies.dat' using ($1/24):($2/1000) notitle with points linestyle 1, '../codis/2-potencies.dat' using ($1/24):($3/1000) notitle with points linestyle 3
+plot '../codis/2-potencies.dat' using ($1/24):($2/1000000) notitle with lines linestyle 1, '../codis/2-potencies.dat' using ($1/24):($3/1000000) notitle with lines linestyle 3
 
