@@ -29,7 +29,6 @@
 	bottom = 3cm,
 	top = 3cm
 }
-\setlength{\columnsep}{1cm}
 
 \hypersetup{
 	colorlinks,
@@ -99,17 +98,26 @@
 
 \noindent \hrulefill \\
 \begin{abstract}
+\sffamily
+The aim of this report is to analyze and study the process of composting at a small scale. We model a composting pile focusing on the balance between the heat output by the process of composting and the losses due to convection. To quantify the heat produced by the microbial population we use a logistic model for its evolution, with a temperature dependent specific growth rate. Additionally we consider two different kinds of microorganisms, mesophiles and thermophiles. 
 
+The differential equations we obtain are not analaytically solvable, so we use numerical methods to find solutions for a particular set of parameters based on the current literature. We analyze the solutions obtained for the case of a cubic pile and a semispherical pile.    
+
+Finally, we discuss the range of validity of the model and how it could be improved with further research.
 \end{abstract}
 \hrulefill
 \end{titlingpage}
 
 \begin{titlingpage}
+	\sffamily
 	\tableofcontents
 \end{titlingpage}
 
 \section{Introduction}
-\section{Thezo composting process}
+The average American produces \SI{10}{kg} of organic waste every month. This number grows bigger if we consider families, schools and restaurants. The rising global waste is an issue that upcoming generations, if not ours, will eventually have to face. Composting is an easy, clean and free way of transforming the organic waste we produce into rich and fertile soil, which can be a helpful step to a self-suficient lifestyle. It is then useful to gain as much insight into this process as possible, to optimize it and make it more attractive for the general population. 
+
+The goal of this paper is to model and study the process of composting at a small scale, paying special attention to the biological processes that take place and how they impact the physical aspects of composting.We will model how the different microbial populations grow in the pile and how we can maximize their efficiency by simply changing the shape of the compost pile. 
+\section{The composting process} 
 Composting is defined as the biological oxidative decomposition of organic constituents of waste under controlled conditions. This process is mainly used to recycle organic matter into useful soil conditioner which can be used in gardening, agriculture and horticulture.
 
 \subsection{Biological aspects}
@@ -124,7 +132,7 @@ After the increase in temperature activates the thermophilic microbes, compostin
 Finally there is the \emph{cooling and maturation phase}, during which, as microbial populations stabilize, decomposition rate decreases and temperature declines, allowing mesophilic microorganisms to recolonize the compost. In the final process of stabilization and mineralization, the most stable organic compounds are decomposed and the compost becomes a fertile final product at an ambient temperature.
  
 \subsection{Physical aspects}
-\subsubsection{Temperature profile}
+\subsubsection{Temperature profile}\label{sec:temperatura}
 The nature of the composting process leads to a characteristic temperature profile. A typical experimental temperature curve, such as the one in \cref{fig:corba model}, has a steep slope at the beginning, corresponding to the rapid output of heat during the growth of the first mesophilic populations. In some cases, there can be a characteristic dip in temperature at around \SI{40}{\celsius}. This is because at this point the mesophilic populations is reaching stagnation, and if the growth rate of the thermophilic population is still small, the combination of these two phenomena leads to a period of low microbial activity, and therefore a low power output. We can then identify the transition between the mesophilc and thermophilic stages. Finally, once thermophilic activity ceases, convective heat loss becomes dominant and the temperature lowers steadily, signaling the cooling and maturation and phase. 
 
 \begin{figure}[htb]
@@ -177,9 +185,9 @@ and
 
 If the forward and inverse reactions follow Arrhenius kinetics, we can write $k_i=P_ie^{-E_i/RT}$, where $P_i$ are the empirical pre-exponential factors, $E_i$ the respective activation energies, $R$ the universal gas constant and $T$ the temperature. This, combined with \cref{eq:cinetica 1,eq:cinetica 2} gives the temperature dependance of the specific growth rate \( \mu(T) \), 
 \begin{equation} \label{eq:mumax}
-    \mu(T)=\frac{P_1e^{-E_1/RT}}{1+\frac{P_2}{P_2}e^{-E_2/RT}}
+    \mu(T)=\frac{A_1e^{-E_1/RT}}{1+A_2e^{-E_2/RT}}
 \end{equation}
-using the approximation $k_2\gg k_1$ ACABAR!!!!!
+using the approximation $k_2\gg k_1$. \( A_1 \) is \( -P_1 \) and \( A_2 \) is \( P_2/P_1 \).
 
 We now have an expression governing the evolution of the bacterial population,
 \begin{equation}\label{eq:edo B}
@@ -203,9 +211,15 @@ Hence, we can write the differential equation that governs \( T \):
 
 No equivalent set of data for thermophilic microbes was readily available. For our model we extrapolated the corresponding parameters for a thermophilic population. Given that the thermophilic phase usually is longer and entails a smaller temperature change than the mesophilic phase, the specific growth rate and exothermicity of thermophiles should be smaller than those of mesophiles. 
 
-In \cite{saucedo}, there is no distinction between mesophiles and thermophiles. It provides values for the initial and maximum concentration for the total microbial population. It seems reasonable to split these values between the mesophilic and thermophilic populations, since we could not find specific data for the ratio of mesophiles to thermophiles. Additionally, these values are given as percentages of the dry matter. Although it is widely known that the moisture content of the composting materials diminishes due to evaporation, we can argue, following \cite{niceassumptions}, that in our case it will remain constant since our pile is not physically isolated from the environment. We assume that the moisture content of vegetable waste is around 50\%. 
+In \cite{saucedo}, there is no distinction between mesophiles and thermophiles. It provides values for the initial and maximum concentration for the total microbial population. It seems reasonable to split these values between the mesophilic and thermophilic populations, since we could not find specific data for the ratio of mesophiles to thermophiles. Additionally, these values are given as percentages of the dry matter. Although it is widely known that the moisture content of the composting materials diminishes due to evaporation, we can argue, following \cite{niceassumptions}, that in our case it will remain constant since our pile is not physically isolated from the environment. We assume that the moisture content of vegetable waste is around 50\%. The density of the waste was assumed to be of \SI{500}{kg.m^{-3}}. 
+
+All of these values are presented in \cref{tab:parametres}.
 
 \section{Results and analysis}
+The integration of the system of equations that govern \( T \), \( B_1 \) and \( B_2 \) was performed numerically in SageMath. 
+
+\subsection{Analysis of a generic composting process}
+
 \begin{figure}[htb]
 	\sffamily \footnotesize \centering
 	\input{figs/2-temperatura}
@@ -213,10 +227,9 @@ In \cite{saucedo}, there is no distinction between mesophiles and thermophiles. 
 	\label{fig:temp-mesos-termos}
 \end{figure}
 
-\subsection{Analysis of a generic composting process}
-Considering a compost pile of a surface area of \SI{7}{m^2} with \SI{30}{kg} inside, we obtain the temperature profile in \cref{fig:temp-mesos-termos}. One can clearly observe the three different phases of the composting process. During the first 48 hours the temperature rises rapidly due to the burst in activity of the mesophilic population. This is also clear in \cref{fig:potencies}. We can see that the mesophilic population outputs the highest power during the first 24 hours but quickly decays as the mesophilic population reaches its saturation value and becomes stagnant.
+Considering a compost pile of a size legth of \SI{1}{m}, given the density we have considered, we obtain \SI{500}{kg} inside, we obtain the temperature profile in \cref{fig:temp-mesos-termos}. One can clearly observe the three different phases of the composting process. During the first 48 hours the temperature rises rapidly due to the burst in activity of the mesophilic population. This is also clear in \cref{fig:potencies}. We can see that the mesophilic population outputs the highest power during the first 24 hours but quickly decays as the mesophilic population reaches its saturation value and becomes stagnant.
 
-After this, the thermophilic activity rises. Given that we modeled the thermophilic process to be much slower and less exothermic than the mesophilic one, the maximum output power is not nearly as high, nor is the decay as stark. This explains the slight dip in the temperature we observe after the mesophilic activity ceases: the power output by the thermophilic process in its initial stage is too low to counter the heat lost due to convection, therefore the temperature dips. After this, however, the temperature rises steadily to just under \SI{50}{\celsius}. We see that thermophilic activity diminishes after 12 days, when the population reaches its saturation value (\cref{fig:poblacions}). 
+After this, the thermophilic activity rises. Given that we modeled the thermophilic process to be much slower and less exothermic than the mesophilic one, the maximum output power is not nearly as high, nor is the decay as stark. This explains the slight dip in the temperature we observe after the mesophilic activity ceases: the power output by the thermophilic process in its initial stage is too low to counter the heat lost due to convection, therefore the temperature dips. After this, however, the temperature rises steadily to just under \SI{50}{\celsius}. We see that thermophilic activity diminishes after 12 days, when the population reaches its saturation value (\cref{fig:poblacions}). All of this is in agreement with the general characteristics of the composting process discussed in \cref{sec:temperatura}.
 
 \begin{figure}[htb]
 	\sffamily \footnotesize \centering
@@ -225,7 +238,7 @@ After this, the thermophilic activity rises. Given that we modeled the thermophi
 	\label{fig:potencies}
 \end{figure}
 
-After this point, the pile is subject solely to convective losses, and its temperature slowly decays to the ambient temperature. It must be noted that the temperature does suffer small fluctuations ---within \SI{1}{\celsius}--- due to the oscillation of the ambient temperature. However the oscillations of the outside temperature are too fast ---they have a period of 1 day--- to have a significant effect on the temperature of the pile.  
+After this point, the pile is subject solely to convective losses, and its temperature slowly decreases to the ambient temperature. It must be noted that the temperature does suffer small fluctuations ---within \SI{1}{\celsius}--- due to the oscillation of the ambient temperature. However the oscillations of the outside temperature are too fast ---they have a period of 1 day--- to have a significant effect on the temperature of the pile.  
 
 \begin{figure}[htb]
 	\sffamily \footnotesize \centering
@@ -240,25 +253,65 @@ Given that we are considering composting on the domestic scale, the range of siz
 \begin{figure}[htb]
 	\sffamily \footnotesize \centering
 	\input{figs/2-temperatura-A}
-	\caption{Temperature evolution of the compost pile for various values of surface area}
+	\caption{Temperature evolution of a cubic compost pile for various values of surface area}
 	\label{fig:temp-arees}
 \end{figure}
 
-If we assume the density of vegetable waste to be on the order of \SI{500}{kg.m^{-3}}, for a given value of surface area, we can compute the mass of the pile as \( m = \rho(A/5)^{\frac{3}{2}} \), since only five out of the six faces would suffer heat loss due to convection, the sixth one being in contact with the ground. We see that the temperature evolution during the thermophilic stage is essentially independent of the area, but not the thermophilic stage. The maximum temperature ranges between \SI{50}{\celsius} and \SI{57}{\celsius}, with the higher temperatures being attained for the smaller surface areas which are less subject to convective losses.   
+For a given value of surface area, we can compute the mass of the pile as \( m = \rho\left(\frac{1}{5}A\right)^{\frac{3}{2}} \), since only five out of the six faces would suffer heat loss due to convection, the sixth one being in contact with the ground. We see that the temperature evolution during the mesophilic stage is essentially independent of the area, but not during the thermophilic stage. The maximum temperature ranges between \SI{50}{\celsius} and \SI{57}{\celsius}. The smaller the surface area, the higher the maximum temperature reached, which is reasonable since the smaller surface areas are less subject to convective losses. In any case, every size is able to reach temperatures high enough for composting to occur.  
 
 \begin{figure}[htb]
 	\sffamily \footnotesize \centering
 	\input{figs/3-temperatura-A}
-	\caption{Temperature evolution of the compost pile for various values of surface area}
+	\caption{Temperature evolution of a semispherical compost pile for various values of surface area}
 	\label{fig:temp-semiesferes}
 \end{figure}
 
-To obtain \cref{fig:temp-semiesferes} we performed the same calculations considering a semispherical pile instead. The relationship between the mass and the surface area now becomes \( m = \rho\frac{4\pi}{3}(\frac{A}{2\pi})^{\frac{3}{2}} \).
+To obtain \cref{fig:temp-semiesferes} we performed the same calculations considering a semispherical pile instead. The relationship between the mass and the surface area now is \( m = \frac{4\pi\rho}{3}\left(\frac{A}{2\pi}\right)^{\frac{3}{2}} \). We notice that in this case during both stages of composting the size does not play a higher role and the range of maximum temperatures achieved is much smaller than before. Every size is able to surpass \SI{50}{\celsius}, which was not the case when considering cubic piles. We conclude that a spherical size is more adequate given that it is less affected by the outside temperature. 
+
+\section{Conclusions}
+We have modeled the evolution of the temperature of a compost pile of a small size. We have seen that for various pile shapes, composting does take place, albeit with a wide range of maximum temperatures, between \SI{50}{\celsius} and \SI{60}{\celsius}. However, with a spherical pile, the surface to volume ratio is such that the temperature during the heating stages is independent of the size of the pile. If the pile is too small, however, convection is not sufficient to maintain the temperature below the threshold of \SI{60}{\celsius}, above which thermophiles cannot decompose the organic matter and composting does not take place. And if it is too large, the convective losses are too large and the pile does not reach \SI{40}{\celsius}, and so the thermophilic stage does not start and composting does not take place either. For the cubic pile, this range of volumes is between \SI{0.72}{m^3} and \SI{4.78}{m^3}.   
+
+\subsection{Strengths and weaknesses}
+Our model is reasonably simple, given that it doesnot take into account the inside of the pile, and is only concerned with the global heat balance. In spite of this we have managed to obtain sensible temperature profiles for a compost pile on the domestic scale. It also clearly shows the dependence of the composting process on the volume to surface ratio.
+
+Considering the different types of microbial populations is not the standard approach to modelling composting processes. This gives a profile that is similar to many of the experimentally obtained temperature profiles, which in turn allows us to extract information on the duration and temperature of every phase, which determines the quality of the resulting fertilizer. 
+
+However, considering the pile to be homogenous does not allow us to consider relevant phenomena such as the evaporation of water and consequent loss of humidity and heat as well the diffusion processes of oxygen inside the pile, which impacts the activity of the microorganisms ---composting is a strongly aerobic process, a lack of oxygen can lead to fermentation, an anaerobic process, which is undesirable---.  
+
+Our model is tuned to the scale we are considering. If we apply it to larger scales it is not as useful, since we do not consider interior processes that become relevant as the pile grows bigger. 
+
+\subsection{Further work}
+During our research we encountered a plethora of different approaches to the modeling of composting processes, see \cite{mason}, which, on the other side are heavily dependent on parameteres that need to be experimentally determined. 
+
+In particular, there is no experimental data that focuses on the characteristics of a single microorganism population. It would be useful to have more insight on the differences between the behavior of mesophiles and thermophiles. 
+
+Our modelling of ambient temperature, was perhaps oversimplified, in the sense that such wide oscillations with such a short period of time does not have a relevant impact on the temperature we obtain. A future improvement could be to model the daily fluctuations in temperature and humidity stochastically. 
 
 \clearpage
 \appendix
+\onecolumn
 
-\section{References and Further Reading}
+\section{Model parameters}
+\begin{table}[htb]
+\sffamily \footnotesize \centering
+\caption{Chosen parameters}
+\label{tab:parametres}
+\begin{tabular}{cSS}
+		\toprule 
+		{Parameter} & {Value (Mesophiles)} & {Value (Thermophiles)} \\
+		\midrule 
+		$Q_b$ & \SI{1}{MJ.kg^{-1}} & \SI{0.36}{MJ.kg^{-1}} \\
+		$E_1$ & \SI{70.225}{kJ.mol^{-1}} & \SI{74.438}{kJ.mol^{-1}} \\
+		$E_2$ & \SI{283.356}{kJ.mol^{-1}} & \SI{300.357}{kJ.mol^{-1}} \\
+		$A_1$ & \SI{2.69e11}{h^{-1}} & \SI{1.34}{h^{-1}} \\
+		$A_2$ & 1.3e47 & 3.9e47 \\
+		$B_0$ & 0.25\% & 0.25\% \\ 
+		$B_\text{max}$ & 7.5\% & 7.5\% \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{References and further reading}
 \begin{btSect}{fonts}
 	\bibliographystyle{ieeetr}
 	\subsection*{References}	

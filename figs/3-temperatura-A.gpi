@@ -19,7 +19,7 @@ set ytics scale 1,0.5
 set mytics 2
 set grid xtics ytics mxtics mytics linestyle 2
 
-set label at 25,49 '\etiqueta{\footnotesize $\mathsfit{A} = \SI{1}{m^2}$}' center rotate by -13 front textcolor rgb "dark-violet"
-set label at 20,36 '\etiqueta{\footnotesize $\mathsfit{A} = \SI{10}{m^2}$}' center rotate by -25 front textcolor rgb "dark-violet"
+set label at 25,57 '\etiqueta{\footnotesize $\mathsfit{A} = \SI{1}{m^2}$}' center rotate by -6 front textcolor rgb "dark-violet"
+set label at 20,50 '\etiqueta{\footnotesize $\mathsfit{A} = \SI{10}{m^2}$}' center rotate by -13 front textcolor rgb "dark-violet"
 
 plot 39 notitle linestyle 3, 61 notitle linestyle 3, for [i = 0:9] '../codis/3-temperatura-'.i.'.dat' using ($1/24):2 notitle with points linestyle 1
